@@ -34,9 +34,9 @@
     <!-- Logo -->
     <a href="./index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>S</b>MP</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Sistema</b>de Mapas</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -343,6 +343,123 @@
             <!-- /.box-body -->
           </div>
           <!-- ESTADO END-->
+
+
+          <!-- AUTORES START-->
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Autores</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="table_autores" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+
+                  <th>IDAutor</th>
+                  <th>Nombre</th>
+                  <th>FechaNacimiento</th>
+                  <th>Telefono</th>
+                  <th>Direccion</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <?php $result = $mysqli->query("select * from Autores");
+                    $data = array();
+                    while($row = $result->fetch_assoc()){?>
+                <tr>
+                  <td><?echo $row['IDAutor'] ?> </td>
+                  <td><?echo $row['Nombre'] ?> </td>
+                  <td><?echo $row['FechaNacimiento'] ?> </td>
+                  <td><?echo $row['Telefono'] ?> </td>
+                  <td><?echo $row['Direccion'] ?> </td>
+                                    
+                </tr>
+                  <?php }?>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>IDAutor</th>
+                  <th>Nombre</th>
+                  <th>FechaNacimiento</th>
+                  <th>Telefono</th>
+                  <th>Direccion</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- AUTORES END-->
+
+
+          <!-- CLIMAS START-->
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Climas</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="table_climas" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>IDEstado </th>
+                  <th>Tipo De Clima </th>
+                  <th>Promedio Primavera </th>
+                  <th>Promedio Verano </th>
+                  <th>Promedio Otono </th>
+                  <th>Promedio Invierno </th>
+                  <th>Temperatura Alta Record </th>
+                  <th>Fecha Temperatura Alta Record </th>
+                  <th>Temperatura Baja Record </th>
+                  <th>Fecha Temperatura Baja Record</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php $result = $mysqli->query("select * from Climas");
+                    $data = array();
+                    while($row = $result->fetch_assoc()){?>
+                <tr>
+                  <td><?echo $row['IDEstado'] ?> </td>
+                  <td><?echo $row['TipoDeClima'] ?> </td>
+                  <td><?echo $row['PromedioClimaPrimavera'] ?> </td>
+                  <td><?echo $row['PromedioClimaVerano'] ?> </td>
+                  <td><?echo $row['PromedioClimaOtono'] ?> </td>
+                  <td><?echo $row['PromedioClimaInvierno'] ?> </td>
+                  <td><?echo $row['TemperaturaAltaRecord'] ?> </td>
+                  <td><?echo $row['FechaTemperaturaAltaRecord'] ?> </td>
+                  <td><?echo $row['TemperaturaBajaRecord'] ?> </td>
+                  <td><?echo $row['FechaTemperaturaBajaRecord'] ?> </td>
+                                    
+                </tr>
+                  <?php }?>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>IDEstado </th>
+                  <th>Tipo De Clima </th>
+                  <th>Promedio Primavera </th>
+                  <th>Promedio Verano </th>
+                  <th>Promedio Otono </th>
+                  <th>Promedio Invierno </th>
+                  <th>Temperatura Alta Record </th>
+                  <th>Fecha Temperatura Alta Record </th>
+                  <th>Temperatura Baja Record </th>
+                  <th>Fecha Temperatura Baja Record</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- Climas END-->
+
+
+
+
+
+
           <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -581,36 +698,41 @@
 
 
   $(document).ready( function() {
-          $('#table_estados').dataTable( {
-            "language": {
-              "search": "Buscar:",
-              "info": "Mostrando pagina _PAGE_ de _PAGES_",
-              "lengthMenu": "Mostrar _MENU_ records"
-            }
-          } );//datatable setup end
-        
+    $('#table_estados').dataTable( {
+      "language": {
+        "search": "Buscar:",
+        "info": "Mostrando pagina _PAGE_ de _PAGES_",
+        "lengthMenu": "Mostrar _MENU_ records"
+        }
+      });
+    $('#table_paises').dataTable( {
+      "language": {
+        "search": "Buscar:",
+        "info": "Mostrando pagina _PAGE_ de _PAGES_",
+        "lengthMenu": "Mostrar _MENU_ records"
+        }
+      });
+ $('#table_autores').dataTable( {
+      "language": {
+        "search": "Buscar:",
+        "info": "Mostrando pagina _PAGE_ de _PAGES_",
+        "lengthMenu": "Mostrar _MENU_ records"
+        }
+      }); 
+ $('#table_climas').dataTable( {
+      "language": {
+        "search": "Buscar:",
+        "info": "Mostrando pagina _PAGE_ de _PAGES_",
+        "lengthMenu": "Mostrar _MENU_ records"
+        }
+      });
 
-        } );//function end
+  } );//function end
 
 
-
-  $(function () {
 
 
  
-
-
-
-    $("#table_paises").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
 </script>
 </body>
 </html>
